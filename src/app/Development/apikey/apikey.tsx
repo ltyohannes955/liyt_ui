@@ -31,14 +31,17 @@ const Apikey = () => {
 
   const createApiKey = async () => {
     try {
-      const response = await fetch("https://liytapi.fenads.org/api_keys", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${userToken}`,
-        },
-        body: JSON.stringify({ api_key: { name: "" } }),
-      });
+      const response = await fetch(
+        "https://liyt-api-849543905413.europe-west1.run.app/api_keys",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${userToken}`,
+          },
+          body: JSON.stringify({ api_key: { name: "" } }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create key");
@@ -54,7 +57,7 @@ const Apikey = () => {
   const deleteApiKey = async (id: string) => {
     try {
       const response = await fetch(
-        `https://liytapi.fenads.org/api_keys/${id}`,
+        `https://liyt-api-849543905413.europe-west1.run.app/api_keys/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -77,13 +80,16 @@ const Apikey = () => {
   const feachkey = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://liytapi.fenads.org/api_keys", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${userToken}`,
-        },
-      });
+      const response = await fetch(
+        "https://liyt-api-849543905413.europe-west1.run.app/api_keys",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${userToken}`,
+          },
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }

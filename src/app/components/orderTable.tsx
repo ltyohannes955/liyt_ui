@@ -28,7 +28,7 @@ const OrderTable = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://liytapi.fenads.org/users/${userId}/orders`
+        `https://liyt-api-849543905413.europe-west1.run.app/users/${userId}/orders`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch orders");

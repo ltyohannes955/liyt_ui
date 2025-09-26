@@ -26,7 +26,9 @@ const CreateOrderPage = () => {
     const url = window.location.href; // Gets the current URL
     const id = url.split("/").pop();
     try {
-      const response = await fetch(`https://liytapi.fenads.org/orders/${id}`);
+      const response = await fetch(
+        `https://liyt-api-849543905413.europe-west1.run.app/orders/${id}`
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch orders");
       }
@@ -56,7 +58,7 @@ const CreateOrderPage = () => {
   const fetchLocationSuggestions = async (query: string, type: string) => {
     try {
       const response = await fetch(
-        `https://liytapi.fenads.org/location/${query}`
+        `https://liyt-api-849543905413.europe-west1.run.app/location/${query}`
       );
       const data = await response.json();
       if (type === "primary") {
@@ -85,7 +87,7 @@ const CreateOrderPage = () => {
     if (origin && destination) {
       try {
         const response = await fetch(
-          `https://liytapi.fenads.org/orders/get_price?origin=${origin}&destination=${destination}`
+          `https://liyt-api-849543905413.europe-west1.run.app/orders/get_price?origin=${origin}&destination=${destination}`
         );
         const data = await response.json();
         setRouteCoordinates(data.payload.directions);
@@ -105,7 +107,7 @@ const CreateOrderPage = () => {
     } else {
       try {
         const response = await fetch(
-          `https://liytapi.fenads.org/orders/${id}`,
+          `https://liyt-api-849543905413.europe-west1.run.app/orders/${id}`,
           {
             method: "PATCH", // Use PUT for full updates, PATCH for partial updates
             headers: {
@@ -139,7 +141,7 @@ const CreateOrderPage = () => {
   ) => {
     try {
       const response = await fetch(
-        `https://liytapi.fenads.org/orders/get_price?origin=${originLat},${originLon}&destination=${destinationLat},${destinationLon}`
+        `https://liyt-api-849543905413.europe-west1.run.app/orders/get_price?origin=${originLat},${originLon}&destination=${destinationLat},${destinationLon}`
       );
       const data = await response.json();
       setPrice(data.payload.total_price);

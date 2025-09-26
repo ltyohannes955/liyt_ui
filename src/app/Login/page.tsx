@@ -24,13 +24,16 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://liytapi.fenads.org/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ auth: formData }),
-      });
+      const response = await fetch(
+        "https://liyt-api-849543905413.europe-west1.run.app/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ auth: formData }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

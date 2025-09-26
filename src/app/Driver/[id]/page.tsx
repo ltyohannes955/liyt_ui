@@ -56,7 +56,7 @@ const JobDetails = () => {
   const handleOrderComplete = async (orderId: number) => {
     try {
       await fetch(
-        `https://liytapi.fenads.org/orders/${orderId}/complete/${userId}`,
+        `https://liyt-api-849543905413.europe-west1.run.app/orders/${orderId}/complete/${userId}`,
         { method: "GET" }
       );
 
@@ -71,7 +71,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://liytapi.fenads.org/orders/${id}`)
+      fetch(`https://liyt-api-849543905413.europe-west1.run.app/orders/${id}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -95,7 +95,7 @@ const JobDetails = () => {
     if (origin && destination) {
       try {
         const response = await fetch(
-          `https://liytapi.fenads.org/orders/get_price?origin=${origin}&destination=${destination}`
+          `https://liyt-api-849543905413.europe-west1.run.app/orders/get_price?origin=${origin}&destination=${destination}`
         );
         const data = await response.json();
         setRouteCoordinates(data.payload.directions);

@@ -52,7 +52,7 @@ const Orders = () => {
   const fetchLocationSuggestions = async (query: string, type: string) => {
     try {
       const response = await fetch(
-        `https://liytapi.fenads.org/location/${query}`
+        `https://liyt-api-849543905413.europe-west1.run.app/location/${query}`
       );
       const data = await response.json();
       if (type === "primary") {
@@ -83,7 +83,7 @@ const Orders = () => {
     if (origin && destination) {
       try {
         const response = await fetch(
-          `https://liytapi.fenads.org/orders/get_price?origin=${origin}&destination=${destination}`
+          `https://liyt-api-849543905413.europe-west1.run.app/orders/get_price?origin=${origin}&destination=${destination}`
         );
         const data = await response.json();
         setRouteCoordinates(data.payload.directions);
@@ -98,13 +98,16 @@ const Orders = () => {
       alert("Please calculate the price first.");
     } else {
       try {
-        const response = await fetch("https://liytapi.fenads.org/orders", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+        const response = await fetch(
+          "https://liyt-api-849543905413.europe-west1.run.app/orders",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
 
         if (response.ok) {
           setIsModalOpen(false);
@@ -126,7 +129,7 @@ const Orders = () => {
   ) => {
     try {
       const response = await fetch(
-        `https://liytapi.fenads.org/orders/get_price?origin=${originLat},${originLon}&destination=${destinationLat},${destinationLon}`
+        `https://liyt-api-849543905413.europe-west1.run.app/orders/get_price?origin=${originLat},${originLon}&destination=${destinationLat},${destinationLon}`
       );
       const data = await response.json();
       setPrice(data.payload.total_price);

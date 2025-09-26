@@ -49,13 +49,16 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch("https://liytapi.fenads.org/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user: formData }),
-      });
+      const response = await fetch(
+        "https://liyt-api-849543905413.europe-west1.run.app/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user: formData }),
+        }
+      );
 
       if (response.ok) {
         router.push("/Login");
